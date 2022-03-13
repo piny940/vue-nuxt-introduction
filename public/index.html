@@ -11,22 +11,33 @@
 <title>My first Vue app</title>
 </head>
 <body>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
   <h1>Hello World</h1>
-  <input type="text" name="" id="" oninput="onChange(event);">
   <div id="message">
-    {{ message + "! hoge" }}
+    <div :name="name" :class="classes">hogehage</div>
   </div>
+  <input type="button" value="" id="button" onclick="onClick(event);">
+
   <script>
-    const data = {
-      message: "Hello!"
+    const classObj = {
+      red: true
     };
+    const data = {
+      name: "hoge",
+      classes: classObj
+    };
+
     const app = new Vue({
       el: "#message",
       data: data
     });
 
-    const onChange = e => {
-      data.message = e.target.value;
+    const onClick = e => {
+      data.class.red = !data.class.red;
     };
   </script>
 </body>
