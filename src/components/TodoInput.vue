@@ -13,10 +13,16 @@ export default {
     };
   },
   props: {
-    addTodo: Function,
+    addTodo: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
     onClick: function() {
+      if (!this.input) {
+        return;
+      }
       this.addTodo(this.input);
       this.input = "";
     },

@@ -15,7 +15,10 @@ export default {
     TodoItem,
   },
   props: {
-    tasks: Array,
+    tasks: {
+      type: Array,
+      required: true,
+    },
   },
   computed: {
     existTasks: function() {

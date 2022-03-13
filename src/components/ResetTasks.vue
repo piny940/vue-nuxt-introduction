@@ -5,7 +5,10 @@
 <script>
 export default {
   props: {
-    resetTasks: Function,
+    resetTasks: {
+      type: Function,
+      required: true,
+    },
   },
 };
 </script>
