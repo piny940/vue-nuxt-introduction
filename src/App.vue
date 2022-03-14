@@ -11,8 +11,12 @@
         v-on:after-leave="afterLeave">
         <span class="box" v-if="show" ></span>
       </transition>
+      <button @click="show = !show">fade</button>
+      <button @click="animUp = !animUp">move anime</button>
+      <transition name="hoge">
+        <span class="box" v-if="animUp"></span>
+      </transition>
     </div>
-    <button @click="show = !show">fade</button>
   </div>
 </template>
 
@@ -28,6 +32,7 @@ export default {
     return {
       show: true,
       hasEntered: true,
+      animUp: true,
     };
   },
   methods: {
@@ -56,6 +61,7 @@ export default {
   width: 50px;
   height: 50px;
   background: #000;
+  margin: 20px;
 }
 
 button{
@@ -71,5 +77,28 @@ button{
 .v-leave-to {
   opacity: 0;
   transform: translateX(200px) rotateZ(360deg) rotateX(180deg);
+}
+
+.hoge-enter-active {
+  animation: anim 2s linear reverse;
+}
+.hoge-leave-active {
+  animation: anim 2s linear;
+}
+@keyframes anim {
+  0% {
+    transform: translateX(0px) translateY(0px);
+    opacity: 1;
+  }
+  33% {
+    transform: translateX(300px) translateY(100px);
+  }
+  66% {
+    transform: translateX(0px) translateY(200px);
+  }
+  100% {
+    transform: translateX(300px) translateY(300px);
+    opacity: 0;
+  }
 }
 </style>
